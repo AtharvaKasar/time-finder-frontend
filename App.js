@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 // pages
@@ -10,7 +9,6 @@ import Add from './containers/Add'
 import Settings from './containers/Settings'
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 export default function App() {
   return (
@@ -24,22 +22,15 @@ export default function App() {
               case 'Home':
                 iconName = 'ios-calendar';
                 break;
-              case 'Add':
+              case 'Add':å
                 iconName = focused ? 'ios-add-circle' : 'ios-add-circle-outline';
                 break;
               case 'Settings':
                 iconName = 'ios-settings';
                 break;
               default:
-                break;
+                iconName = 'ios-missing';
             }
-
-            if (route.name === 'Home') {
-              
-            } else if (route.name === 'Add') {
-              
-            }
-
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
