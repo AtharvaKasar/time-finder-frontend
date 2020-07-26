@@ -22,7 +22,7 @@ export default function App() {
               case 'Home':
                 iconName = 'ios-calendar';
                 break;
-              case 'Add':å
+              case 'Add':
                 iconName = focused ? 'ios-add-circle' : 'ios-add-circle-outline';
                 break;
               case 'Settings':
