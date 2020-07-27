@@ -1,10 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native';
+import Card from '../Card'
 
 export default function Home() {
     return (
         <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
+            <Card>
+                <Text>Open up App.js to start working on your app!</Text>
+            </Card>
         </View>
     )
 }
