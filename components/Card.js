@@ -1,11 +1,16 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-export default function Card(props) {
+export default function Card({title, start, end, calendar, description}) {
   return (
     <View style={styles.card}>
+      <Text>{ calendar }</Text>
+      <Text>{ title }</Text>
       <View style={styles.cardContent}>
-        { props.children }
+        <Text>
+          { description }
+          { start } to { end }
+        </Text>
       </View>
     </View>
   );

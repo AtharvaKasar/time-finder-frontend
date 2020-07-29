@@ -1,13 +1,17 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native';
-import Card from '../Card'
+import Card from '../components/Card'
 
 export default function Home() {
     return (
         <View style={styles.container}>
-            <Card>
-                <Text>Open up App.js to start working on your app!</Text>
-            </Card>
+            <Card
+                title="Meeting # 1"
+                calendar="Work"
+                description="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                start="9:00 AM"
+                end="11:00 AM"
+            />
         </View>
     )
 }
