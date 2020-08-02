@@ -2,10 +2,11 @@
  
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native';
+
 import Card from '../components/Card'
  
 export default function Home() {
- 
+
     const [cards, updateCards] = useState([])
 
     const clickHandler = () => {
@@ -46,17 +47,16 @@ export default function Home() {
             },
         ]
     }
- 
+
     return (
         <View style={styles.container}>
             {
                 cards
- 
+
                 ?
- 
+
                 cards.map(card => (
                     <Card 
-                        key={card.title}
                         title={card.title}
                         calendar={card.calendar}
                         description={card.description}
