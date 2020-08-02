@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+
 
 // import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -9,6 +11,57 @@ export default function Add() {
     const [description, setDescription] = useState('');
     const [startTime, setStartTime] = useState(1);
     const [endTime, setEndTime] = useState(2);
+    const [date, setDate] = useState("");
+
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+    const [isStartTimePickerVisible, setStartTimePickerVisibility] = useState(false);
+    const [isEndTimePickerVisible, setEndTimePickerVisibility] = useState(false);
+
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+     
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+     
+    const handleConfirmDate = (date) => {
+        //console.warn("A date has been picked: ", date);
+        console.log(date);
+        setDate(date);
+        hideDatePicker();
+    };
+
+    const showStartTimePicker = () => {
+        setStartTimePickerVisibility(true);
+    };
+     
+    const hideStartTimePicker = () => {
+        setStartTimePickerVisibility(false);
+    };
+
+    const handleConfirmStartTime = (startTime) => {
+        //console.warn("A date has been picked: ", date);
+        console.log(startTime);
+        //setStartTime(startTime);
+        hideStartTimePicker();
+    };
+
+    const showEndTimePicker = () => {
+        setEndTimePickerVisibility(true);
+    };
+     
+    const hideEndTimePicker = () => {
+        setEndTimePickerVisibility(false);
+    };
+
+    const handleConfirmEndTime = (endTime) => {
+        //console.warn("A date has been picked: ", date);
+        console.log(endTime);
+        //setEndTime(endTime);
+        hideEndTimePicker();
+    };
 
     return (
         <View style={styles.container}>
@@ -17,55 +70,36 @@ export default function Add() {
                        placeholder='e.g. Lunch Meeting'
                        onChangeText={(val) => setName(val)}/>
 
-            {/* <Picker>
-                <Picker.Item label="12:00 AM" value="0" />
-            </Picker>  */}
-
-            {/* <Modal visible={true} transparent={true} onRequestClose={() => console.log('Close was requested')}>
-                <View style={{margin : 20, padding : 20, backgroundColor : '#efefef', alignItems : 'center', bottom : 30, left : 20, right : 20, position : 'absolute'}}>
-                    <Text> Please pick a value </Text>
-                    <TouchableHighlight onPress={() => setStartTime(1)} style={{padding : 4}}>
-                        <Text>12:00 AM</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => setStartTime(1)} style={{padding : 4}}>
-                        <Text>12:15 AM</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => setStartTime(1)} style={{padding : 4}}>
-                        <Text>12:30 AM</Text>
-                    </TouchableHighlight>
-                </View>
-            </Modal> */}
+            <Button title="Select Date:" onPress={showDatePicker} />
+            <DateTimePickerModal
+                isVisible={isDatePickerVisible}
+                mode="date"
+                onConfirm={handleConfirmDate}
+                onCancel={hideDatePicker}
+            />
 
 
-            {/* <DropDownPicker
-                items={[
-                    {label: '12:00 AM', value: '1'},
-                    {label: '12:15 AM', value: '2'},
-                ]}
-                defaultValue={startTime}
-                containerStyle={{height: 40}}
-                style={{backgroundColor: '#fafafa'}}
-                itemStyle={{
-                    justifyContent: 'flex-start'
-                }}
-                dropDownStyle={{backgroundColor: '#fafafa'}}
-                onChangeItem={item => setStartTime(item.value)}
-            /> */}
+            <Button title="Select Start Time:" onPress={showStartTimePicker} />
+            <DateTimePickerModal
+                isVisible={isStartTimePickerVisible}
+                mode="time"
+                onConfirm={handleConfirmStartTime}
+                onCancel={hideStartTimePicker}
+            />
+
+            <Button title="Select End Time:" onPress={showEndTimePicker} />
+            <DateTimePickerModal
+                isVisible={isEndTimePickerVisible}
+                mode="time"
+                onConfirm={handleConfirmEndTime}
+                onCancel={hideEndTimePicker}
+            />
+
             
             <Text>Event Description:</Text>
             <TextInput style={styles.input} 
                        placeholder='e.g. Meeting to discuss Lunch'
                        onChangeText={(val) => setDescription(val)}/>
-
-            <Text>Start Time:</Text>
-            <TextInput style={styles.input} 
-                       placeholder='e.g. 2:30 PM'
-                       onChangeText={(val) => setStartTime(val)}/>
-
-            <Text>End Time:</Text>
-            <TextInput style={styles.input} 
-                       placeholder='e.g. 4:00 PM'
-                       onChangeText={(val) => setEndTime(val)}/>
 
             <Text>Name: {name}, Description: {description}, Start Time: {startTime}, End Time: {endTime}</Text>
 
