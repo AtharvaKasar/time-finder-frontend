@@ -27,9 +27,7 @@ export default function Add() {
     };
      
     const handleConfirmDate = (date) => {
-        //console.warn("A date has been picked: ", date);
-        console.log(date);
-        setDate(date);
+        setDate(date.toString());
         hideDatePicker();
     };
 
@@ -42,9 +40,7 @@ export default function Add() {
     };
 
     const handleConfirmStartTime = (startTime) => {
-        //console.warn("A date has been picked: ", date);
-        console.log(startTime);
-        //setStartTime(startTime);
+        setStartTime(startTime.toString());
         hideStartTimePicker();
     };
 
@@ -57,9 +53,7 @@ export default function Add() {
     };
 
     const handleConfirmEndTime = (endTime) => {
-        //console.warn("A date has been picked: ", date);
-        console.log(endTime);
-        //setEndTime(endTime);
+        setEndTime(endTime.toString());
         hideEndTimePicker();
     };
 
